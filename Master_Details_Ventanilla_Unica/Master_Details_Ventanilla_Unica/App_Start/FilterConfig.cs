@@ -8,6 +8,8 @@ namespace Master_Details_Ventanilla_Unica
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AuthorizeAttribute());
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }

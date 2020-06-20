@@ -8,6 +8,7 @@ namespace Master_Details_Ventanilla_Unica.Controllers
 {
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -19,7 +20,7 @@ namespace Master_Details_Ventanilla_Unica.Controllers
 
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
