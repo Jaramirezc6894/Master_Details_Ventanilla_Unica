@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Master_Details_Ventanilla_Unica.Models;
+using Master_Details_Ventanilla_Unica.DataLayer;
 
 namespace Master_Details_Ventanilla_Unica
 {
@@ -104,6 +105,19 @@ namespace Master_Details_Ventanilla_Unica
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+    //Configure the rolemanager used id the application rolemanager is defined in the ASP.NET Identity core assembly
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole,string>roleStore)
+            : base(roleStore)
+        {
+
+        }
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager>options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>()));
         }
     }
 }

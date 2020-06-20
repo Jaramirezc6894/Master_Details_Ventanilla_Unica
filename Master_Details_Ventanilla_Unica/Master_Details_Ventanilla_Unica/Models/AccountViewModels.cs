@@ -79,6 +79,7 @@ namespace Master_Details_Ventanilla_Unica.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+        public string FirstName { get; set; }
     }
 
     public class ResetPasswordViewModel

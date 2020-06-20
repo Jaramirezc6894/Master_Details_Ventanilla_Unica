@@ -19,12 +19,31 @@ namespace Master_Details_Ventanilla_Unica.DataLayer
                 .HasColumnAnnotation("Index",
                 new IndexAnnotation(new IndexAttribute("AK_Customer_AccountNumber") { IsUnique = true }));
 
-            Property(c => c.CompanyName).HasMaxLength(50).IsRequired();
-            Property(c => c.Addres).HasMaxLength(50).IsRequired();
-            Property(c => c.City).HasMaxLength(20).IsRequired();
-            Property(c => c.State).HasMaxLength(10).IsRequired();
-            Property(c => c.ZipCode).HasMaxLength(20).IsRequired();
-            Property(c => c.Phone).HasMaxLength(20).IsRequired();
+            Property(c => c.CompanyName)
+                .HasMaxLength(50)
+                .IsRequired()
+                .HasColumnAnnotation("Index",
+                    new IndexAnnotation(new IndexAttribute("AK_Customer_CompanyName") { IsUnique = true}));
+
+            Property(c => c.Addres)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            Property(c => c.City)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.State)
+                .HasMaxLength(10)
+                .IsRequired();
+
+            Property(c => c.ZipCode)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            Property(c => c.Phone)
+                .HasMaxLength(20)
+                .IsRequired();
         }
     }
 }
