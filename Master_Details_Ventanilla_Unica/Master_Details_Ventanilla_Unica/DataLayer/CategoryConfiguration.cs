@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Master_Details_Ventanilla_Unica.DataLayer
 {
-    public class CategoryConfiguration:EntityTypeConfiguration<Category>
+    public class CategoryConfiguration : EntityTypeConfiguration<Category>
     {
         public CategoryConfiguration()
         {

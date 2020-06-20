@@ -10,7 +10,7 @@ using System.Web.Services.Description;
 
 namespace Master_Details_Ventanilla_Unica.DataLayer
 {
-    public class DocumentItemConfiguration:EntityTypeConfiguration<DocumentItem>
+    public class DocumentItemConfiguration : EntityTypeConfiguration<DocumentItem>
     {
         public DocumentItemConfiguration()
         {
@@ -18,13 +18,17 @@ namespace Master_Details_Ventanilla_Unica.DataLayer
                 .HasMaxLength(15)
                 .IsRequired()
                 .HasColumnAnnotation("Index",
+                new IndexAnnotation(new IndexAttribute("AK_DocumentItem_DocumentItemCode") { IsUnique = true }));
 
-                new IndexAnnotation(new IndexAttribute("AK_DocumentItem_DocuementItemCode") { IsUnique = true }));
             Property(di => di.DocumentItemName)
                 .HasMaxLength(255)
                 .IsRequired()
                 .HasColumnAnnotation("Index",
                 new IndexAnnotation(new IndexAttribute("AK_DocumentItem_DocumentItemName") { IsUnique = true }));
+
+            Property(di => di.FileDocumentItem)
+                .HasMaxLength(2)
+                .IsRequired();
         }
     }
 }
